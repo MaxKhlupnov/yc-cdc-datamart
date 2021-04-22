@@ -10,7 +10,7 @@
     "database.password" : "Password!",
     "database.dbname" : "testDB",
     "database.history.kafka.bootstrap.servers" : "rc1a-1jkpneuvrlcrf2je.mdb.yandexcloud.net:9091",
-    "database.history.kafka.topic": "schema-changes.inventory",
+    "database.history.kafka.topic": "inventory.schemachanges",
 
     "database.history.producer.bootstrap.servers" : "rc1a-1jkpneuvrlcrf2je.mdb.yandexcloud.net:9091",
     "database.history.producer.security.protocol" : "SASL_SSL",
