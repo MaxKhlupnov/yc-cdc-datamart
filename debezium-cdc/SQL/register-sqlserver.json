@@ -24,6 +24,6 @@
         "database.history.consumer.sasl.mechanism": "SCRAM-SHA-512",
         "database.history.consumer.ssl.truststore.location" : "/kafka/config/client.truststore.jks",
         "database.history.consumer.ssl.truststore.password" : "pass@word1",
-        "database.history.consumer.ssl.key.password" : "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"inventory\" password=\"pass@word1\";"
+        "database.history.consumer.sasl.jaas.config" : "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"inventory\" password=\"pass@word1\";"
     }
 }
