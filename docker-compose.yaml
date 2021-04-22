@@ -1,0 +1,23 @@
+version: '2'
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+     - 1433:1433
+    environment:
+     - ACCEPT_EULA=Y
+     - MSSQL_PID=Standard
+     - SA_PASSWORD=Password!
+     - MSSQL_AGENT_ENABLED=true
+  connect:
+    image: yc/connect:1.6
+    ports:
+     - 8083:8083
+    links:
+     - sqlserver
+    environment:
+     - BOOTSTRAP_SERVERS=rc1a-1jkpneuvrlcrf2je.mdb.yandexcloud.net:9091
+     - GROUP_ID=1
+     - CONFIG_STORAGE_TOPIC=my_connect_configs
+     - OFFSET_STORAGE_TOPIC=my_connect_offsets
+     - STATUS_STORAGE_TOPIC=my_connect_statuses
