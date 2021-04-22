@@ -45,7 +45,7 @@ RUN echo "$SHA512HASH /tmp/kafka.tgz" | sha512sum -c - &&\
     tar -xzf /tmp/kafka.tgz -C $KAFKA_HOME --strip-components 1 &&\
     rm -f /tmp/kafka.tgz
 
-COPY ./log4j.properties $KAFKA_HOME/config/log4j.properties
+COPY log4j.properties $KAFKA_HOME/config/log4j.properties
 RUN mkdir $KAFKA_HOME/config.orig &&\
     mv $KAFKA_HOME/config/* $KAFKA_HOME/config.orig &&\
     chown -R kafka:kafka $KAFKA_HOME/config.orig
@@ -70,6 +70,6 @@ WORKDIR $KAFKA_HOME
 EXPOSE 9092
 VOLUME ["/kafka/data","/kafka/logs","/kafka/config"]
 
-COPY ./docker-entrypoint.sh /
+COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["start"]
