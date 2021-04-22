@@ -18,6 +18,6 @@ services:
     environment:
      - BOOTSTRAP_SERVERS=rc1a-1jkpneuvrlcrf2je.mdb.yandexcloud.net:9091
      - GROUP_ID=1
-     - CONFIG_STORAGE_TOPIC=my_connect_configs
-     - OFFSET_STORAGE_TOPIC=my_connect_offsets
-     - STATUS_STORAGE_TOPIC=my_connect_statuses
+     - CONFIG_STORAGE_TOPIC=inventory.configs
+     - OFFSET_STORAGE_TOPIC=inventory.offsets
+     - STATUS_STORAGE_TOPIC=inventory.statuses
