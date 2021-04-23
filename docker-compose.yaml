@@ -10,7 +10,7 @@ services:
      - SA_PASSWORD=Password!
      - MSSQL_AGENT_ENABLED=true
   connect:
-    image: yc/connect:1.4
+    image: yc/connect:1.6
     ports:
      - 8083:8083
     links:

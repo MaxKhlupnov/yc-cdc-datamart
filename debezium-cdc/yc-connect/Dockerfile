@@ -1,5 +1,5 @@
 FROM debezium/connect:1.6
-do
+
 LABEL maintainer="Yandex Cloud Architects Community"
 
 #
