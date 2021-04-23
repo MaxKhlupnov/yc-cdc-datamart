@@ -1,0 +1,40 @@
+#GET http://<connector_vm>:8083/connectors/  HTTP/1.1
+
+#DELETE http://<connector_vm>:8083/connectors/inventory-connector HTTP/1.1
+
+@broker=rc1a-08e2739h0hgk0lkh.mdb.yandexcloud.net:9091
+@kafka-user=inventory
+@kafka-password=pass@word1
+@truststore-password=pass@word1
+POST http://<connector_vm>:8083/connectors/  HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "inventory-connector",
+    "config": {
+        "connector.class" : "io.debezium.connector.sqlserver.SqlServerConnector",
+        "tasks.max" : "1",
+        "database.server.name" : "inventory",
+        "database.hostname" : "<sql-server-ip>",
+        "database.port" : "1433",
+        "database.user" : "inventory",
+        "database.password" : "pass@word1",
+        "database.dbname" : "Inventory",
+        "database.history.kafka.bootstrap.servers" : "{{broker}}",
+        "database.history.kafka.topic": "inventory.schemachanges",
+
+        "database.history.producer.bootstrap.servers" : "{{broker}}",
+        "database.history.producer.security.protocol" : "SASL_SSL",
+        "database.history.producer.sasl.mechanism": "SCRAM-SHA-512",
+        "database.history.producer.ssl.truststore.location" : "/kafka/config/client.truststore.jks",
+        "database.history.producer.ssl.truststore.password" : "{{truststore-password}}",
+        "database.history.producer.sasl.jaas.config" : "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"{{kafka-user}}\" password=\"{{kafka-password}}\";",
+
+        "database.history.consumer.bootstrap.servers" : "{{broker}}",
+        "database.history.consumer.security.protocol" : "SASL_SSL",
+        "database.history.consumer.sasl.mechanism": "SCRAM-SHA-512",
+        "database.history.consumer.ssl.truststore.location" : "/kafka/config/client.truststore.jks",
+        "database.history.consumer.ssl.truststore.password" : "{{truststore-password}}",
+        "database.history.consumer.sasl.jaas.config" : "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"{{kafka-user}}\" password=\"{{kafka-password}}\";"
+    }
+}
