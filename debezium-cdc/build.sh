@@ -11,4 +11,7 @@ sudo apt install openjdk-11-jre-headless
 wget "https://storage.yandexcloud.net/cloud-certs/CA.pem" -O ./yc-connect/YandexCA.crt
 keytool -keystore ./yc-connect/client.truststore.jks -storepass 'pass@word1'  -alias CARoot -import -file ./yc-connect/YandexCA.crt
 
+docker build -t debezium/kafka:1.6 -f ./kafka/Dockerfile kafka/1.6/.
+docker build -t debezium/connect-base:1.6 -f ./connect-base/Dockerfile connect-base/1.6/.
+docker build -t debezium/connect:1.6 -f ./connect/Dockerfile connect/1.6/.
 docker build -t yc/connect:1.6 -f ./yc-connect/Dockerfile yc-connect/.

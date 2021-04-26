@@ -1,0 +1,197 @@
+{
+	"schema": {
+		"type": "struct",
+		"fields": [
+			{
+				"type": "struct",
+				"fields": [
+					{
+						"type": "int64",
+						"optional": false,
+						"field": "store_id"
+					},
+					{
+						"type": "string",
+						"optional": true,
+						"field": "store_name"
+					},
+					{
+						"type": "string",
+						"optional": true,
+						"field": "store_address"
+					},
+					{
+						"type": "string",
+						"optional": true,
+						"field": "description"
+					}
+				],
+				"optional": true,
+				"name": "inventory.dbo.store_data.Value",
+				"field": "before"
+			},
+			{
+				"type": "struct",
+				"fields": [
+					{
+						"type": "int64",
+						"optional": false,
+						"field": "store_id"
+					},
+					{
+						"type": "string",
+						"optional": true,
+						"field": "store_name"
+					},
+					{
+						"type": "string",
+						"optional": true,
+						"field": "store_address"
+					},
+					{
+						"type": "string",
+						"optional": true,
+						"field": "description"
+					}
+				],
+				"optional": true,
+				"name": "inventory.dbo.store_data.Value",
+				"field": "after"
+			},
+			{
+				"type": "struct",
+				"fields": [
+					{
+						"type": "string",
+						"optional": false,
+						"field": "version"
+					},
+					{
+						"type": "string",
+						"optional": false,
+						"field": "connector"
+					},
+					{
+						"type": "string",
+						"optional": false,
+						"field": "name"
+					},
+					{
+						"type": "int64",
+						"optional": false,
+						"field": "ts_ms"
+					},
+					{
+						"type": "string",
+						"optional": true,
+						"name": "io.debezium.data.Enum",
+						"version": 1,
+						"parameters": {
+							"allowed": "true,last,false"
+						},
+						"default": "false",
+						"field": "snapshot"
+					},
+					{
+						"type": "string",
+						"optional": false,
+						"field": "db"
+					},
+					{
+						"type": "string",
+						"optional": true,
+						"field": "sequence"
+					},
+					{
+						"type": "string",
+						"optional": false,
+						"field": "schema"
+					},
+					{
+						"type": "string",
+						"optional": false,
+						"field": "table"
+					},
+					{
+						"type": "string",
+						"optional": true,
+						"field": "change_lsn"
+					},
+					{
+						"type": "string",
+						"optional": true,
+						"field": "commit_lsn"
+					},
+					{
+						"type": "int64",
+						"optional": true,
+						"field": "event_serial_no"
+					}
+				],
+				"optional": false,
+				"name": "io.debezium.connector.sqlserver.Source",
+				"field": "source"
+			},
+			{
+				"type": "string",
+				"optional": false,
+				"field": "op"
+			},
+			{
+				"type": "int64",
+				"optional": true,
+				"field": "ts_ms"
+			},
+			{
+				"type": "struct",
+				"fields": [
+					{
+						"type": "string",
+						"optional": false,
+						"field": "id"
+					},
+					{
+						"type": "int64",
+						"optional": false,
+						"field": "total_order"
+					},
+					{
+						"type": "int64",
+						"optional": false,
+						"field": "data_collection_order"
+					}
+				],
+				"optional": true,
+				"field": "transaction"
+			}
+		],
+		"optional": false,
+		"name": "inventory.dbo.store_data.Envelope"
+	},
+	"payload": {
+		"before": null,
+		"after": {
+			"store_id": 10050,
+			"store_name": "STORE_10050",
+			"store_address": "обл Московская,г Жуковский,ул Фрунзе,д 28",
+			"description": ""
+		},
+		"source": {
+			"version": "1.5.0.Final",
+			"connector": "sqlserver",
+			"name": "inventory",
+			"ts_ms": 1619280621353,
+			"snapshot": "last",
+			"db": "Inventory",
+			"sequence": null,
+			"schema": "dbo",
+			"table": "store_data",
+			"change_lsn": null,
+			"commit_lsn": "00000036:00006110:0001",
+			"event_serial_no": null
+		},
+		"op": "r",
+		"ts_ms": 1619280621353,
+		"transaction": null
+	}
+}
