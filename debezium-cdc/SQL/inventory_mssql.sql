@@ -1,4 +1,9 @@
--- Enable SQL Agent Jobs
+CREATE DATABASE Inventory;
+GO
+USE Inventory;
+EXEC sys.sp_cdc_enable_db;
+
+
 sp_configure 'show advanced options', 1;
 GO
 RECONFIGURE;
@@ -7,13 +12,6 @@ sp_configure 'Agent XPs', 1;
 GO
 RECONFIGURE
 GO
-
-
-CREATE DATABASE Inventory;
-GO
-USE Inventory;
-EXEC sys.sp_cdc_enable_db;
-
 
 -- Create and populate our products using a single insert with many rows
 CREATE TABLE products (
@@ -94,12 +92,28 @@ INSERT INTO orders(order_date,purchaser,quantity,product_id)
 EXEC sys.sp_cdc_enable_table @source_schema = 'dbo', @source_name = 'orders', @role_name = NULL, @supports_net_changes = 0;
 GO
 
-CREATE TABLE Inventory.dbo.store_data (
-	store_id  bigint  NOT NULL PRIMARY KEY,
-	store_name nvarchar(50) NULL,
-	store_address nvarchar(256) NULL,
-	description nvarchar(max) NULL
-);
-
-EXEC sys.sp_cdc_enable_table @source_schema = 'dbo', @source_name = 'store_data', @role_name = NULL, @supports_net_changes = 0;
---truncate table store_data 
+CREATE TABLE inventory_source (
+  id INTEGER IDENTITY(10001,1) NOT NULL PRIMARY KEY,
+  source_code varchar(255) NOT NULL,
+  "name" varchar(255) NOT NULL,
+  enabled smallint  NOT NULL DEFAULT 1,
+  description text,
+  latitude decimal(8,6) DEFAULT NULL,
+  longitude decimal(9,6) DEFAULT NULL,
+  country_id varchar(2) NOT NULL,
+  region_id int DEFAULT NULL,
+  region varchar(255) DEFAULT NULL,
+  city varchar(255) DEFAULT NULL,
+  street varchar(255) DEFAULT NULL,
+  postcode varchar(255) NOT NULL,
+  contact_name varchar(255) DEFAULT NULL,
+  email varchar(255) DEFAULT NULL,
+  phone varchar(255) DEFAULT NULL,
+  fax varchar(255) DEFAULT NULL,
+  use_default_carrier_config smallint NOT NULL DEFAULT 1,
+  is_pickup_location_active tinyint NOT NULL DEFAULT 0,
+  frontend_name varchar(255) DEFAULT '',
+  frontend_description text
+) 
+EXEC sys.sp_cdc_enable_table @source_schema = 'dbo', @source_name = 'inventory_source', @role_name = NULL, @supports_net_changes = 0;
+GO;
