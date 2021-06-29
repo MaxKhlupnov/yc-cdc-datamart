@@ -10,13 +10,13 @@ services:
      - SA_PASSWORD=Password!
      - MSSQL_AGENT_ENABLED=true
   connect:
-    image: yc/connect:1.6
+    image: yc-connect
     ports:
      - 8083:8083
     links:
      - sqlserver
     environment:
-     - BOOTSTRAP_SERVERS=rc1a-08e2739h0hgk0lkh.mdb.yandexcloud.net:9091
+     - BOOTSTRAP_SERVERS=<my-kafka-cluster-hostname>:<my-kafka-cluster-port>
      - GROUP_ID=1
      - CONFIG_STORAGE_TOPIC=inventory.configs
      - OFFSET_STORAGE_TOPIC=inventory.offsets
