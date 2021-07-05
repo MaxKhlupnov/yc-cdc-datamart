@@ -3,16 +3,6 @@ GO
 USE Inventory;
 EXEC sys.sp_cdc_enable_db;
 
-
-sp_configure 'show advanced options', 1;
-GO
-RECONFIGURE;
-GO
-sp_configure 'Agent XPs', 1;
-GO
-RECONFIGURE
-GO
-
 -- Create and populate our products using a single insert with many rows
 CREATE TABLE products (
   id INTEGER IDENTITY(101,1) NOT NULL PRIMARY KEY,

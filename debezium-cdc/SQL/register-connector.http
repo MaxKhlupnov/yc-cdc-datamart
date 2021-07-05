@@ -2,10 +2,12 @@
 
 #DELETE http://<connector_vm>:8083/connectors/inventory-connector HTTP/1.1
 
-@broker=rc1a-08e2739h0hgk0lkh.mdb.yandexcloud.net:9091
+@broker=<my-kafka-cluster-hostname>:<my-kafka-cluster-port>
 @kafka-user=inventory
 @kafka-password=pass@word1
 @truststore-password=pass@word1
+@{{sql-server-fqdn-or-ip}}=<my-vm-with-sql>
+
 POST http://<connector_vm>:8083/connectors/  HTTP/1.1
 Content-Type: application/json
 
@@ -15,11 +17,11 @@ Content-Type: application/json
         "connector.class" : "io.debezium.connector.sqlserver.SqlServerConnector",
         "tasks.max" : "1",
         "database.server.name" : "inventory",
-        "database.hostname" : "<sql-server-ip>",
+        "database.hostname" : "{{sql-server-fqdn-or-ip}}",
         "database.port" : "1433",
         "database.user" : "inventory",
-        "database.password" : "pass@word1",
-        "database.dbname" : "Inventory",
+        "database.password" : "sa",
+        "database.dbname" : "Password!",
         "database.history.kafka.bootstrap.servers" : "{{broker}}",
         "database.history.kafka.topic": "inventory.schemachanges",
 
