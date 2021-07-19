@@ -1,5 +1,5 @@
 CREATE DATABASE Inventory;
-GO
+
 USE Inventory;
 EXEC sys.sp_cdc_enable_db;
 
@@ -10,6 +10,7 @@ CREATE TABLE products (
   description VARCHAR(512),
   weight FLOAT
 );
+
 INSERT INTO products(name,description,weight)
   VALUES ('bike 12','Small 2-wheel scooter',3.14);
 INSERT INTO products(name,description,weight)
@@ -80,7 +81,7 @@ INSERT INTO orders(order_date,purchaser,quantity,product_id)
 INSERT INTO orders(order_date,purchaser,quantity,product_id)
   VALUES ('21-FEB-2016', 1003, 1, 107);
 EXEC sys.sp_cdc_enable_table @source_schema = 'dbo', @source_name = 'orders', @role_name = NULL, @supports_net_changes = 0;
-GO
+
 
 CREATE TABLE inventory_source (
   id INTEGER IDENTITY(10001,1) NOT NULL PRIMARY KEY,
@@ -104,6 +105,17 @@ CREATE TABLE inventory_source (
   is_pickup_location_active tinyint NOT NULL DEFAULT 0,
   frontend_name varchar(255) DEFAULT '',
   frontend_description text
-) 
+);
+
 EXEC sys.sp_cdc_enable_table @source_schema = 'dbo', @source_name = 'inventory_source', @role_name = NULL, @supports_net_changes = 0;
-GO;
+
+CREATE TABLE store_data (
+	store_id bigint NULL,
+	store_name nvarchar(11) NULL,
+	store_address nvarchar(105) NULL,
+	store_location varchar(27) NULL,
+	description nvarchar(257) NULL
+);
+
+EXEC sys.sp_cdc_enable_table @source_schema = 'dbo', @source_name = 'store_data', @role_name = NULL, @supports_net_changes = 0;
+
