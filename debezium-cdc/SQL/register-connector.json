@@ -7,7 +7,7 @@
     "database.hostname": "<my-vm-with-sql>",
     "database.port": "1433",
     "database.user": "sa",
-    "database.password": "Passwod!",
+    "database.password": "Password!",
     "database.dbname": "Inventory",
     "database.history.kafka.bootstrap.servers": "<broker>",
     "database.history.kafka.topic": "inventory.schemachanges",
