@@ -9,4 +9,5 @@ GO
 RECONFIGURE
 GO
 /*Start SQL Server Agent service*/
+EXEC master.dbo.xp_servicecontrol N'START',N'SQLServerAGENT';
 EXEC master.dbo.xp_servicecontrol N'QUERYSTATE',N'SQLSERVERAGENT'
