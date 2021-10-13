@@ -1,0 +1,29 @@
+{
+  "name": "inventory-connector",
+  "config": {
+    "connector.class" : "io.debezium.connector.sqlserver.SqlServerConnector",
+    "tasks.max" : "1",
+    "database.server.name" : "server1",
+    "database.hostname" : "sqlserver",
+    "database.port" : "1433",
+    "database.user" : "sa",
+    "database.password" : "Password!",
+    "database.dbname" : "Inventory",
+    "database.history.kafka.bootstrap.servers" : "rc1a-08e2739h0hgk0lkh.mdb.yandexcloud.net:9091",
+    "database.history.kafka.topic": "inventory.schemachanges",
+
+    "database.history.producer.bootstrap.servers" : "rc1a-08e2739h0hgk0lkh.mdb.yandexcloud.net:9091",
+    "database.history.producer.security.protocol" : "SASL_SSL",
+    "database.history.producer.sasl.mechanism": "SCRAM-SHA-512",
+    "database.history.producer.ssl.truststore.location" : "/kafka/config/client.truststore.jks",
+    "database.history.producer.ssl.truststore.password" : "pass@word1",
+    "database.history.producer.sasl.jaas.config" : "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"inventory\" password=\"pass@word1\";",
+
+    "database.history.consumer.bootstrap.servers" : "rc1a-08e2739h0hgk0lkh.mdb.yandexcloud.net:9091",
+    "database.history.consumer.security.protocol" : "SASL_SSL",
+    "database.history.consumer.sasl.mechanism": "SCRAM-SHA-512",
+    "database.history.consumer.ssl.truststore.location" : "/kafka/config/client.truststore.jks",
+    "database.history.consumer.ssl.truststore.password" : "pass@word1",
+    "database.history.consumer.sasl.jaas.config" : "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"inventory\" password=\"pass@word1\";"
+  }
+}
