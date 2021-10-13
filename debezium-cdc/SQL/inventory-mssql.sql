@@ -116,6 +116,42 @@ CREATE TABLE store_data (
 	store_location varchar(27) NULL,
 	description nvarchar(257) NULL
 );
+INSERT INTO store_data
+(store_id, store_name, store_address, store_location, description)
+VALUES(1, N'Омега', N'город Москва, улица Новаторов, дом 4, корпус 8', '[55.665135883,37.516913389]', N'в центре села, напротив церкви');
+INSERT INTO store_data
+(store_id, store_name, store_address, store_location, description)
+VALUES(2, N'Гамма', N'город Москва, Лазоревый проезд, дом 15, строение 4', '[55.8538123,37.631289912]', '');
+INSERT INTO store_data
+(store_id, store_name, store_address, store_location, description)
+VALUES(3, N'Сигма', N'город Москва, улица Демьяна Бедного, дом 8', '[55.772185093,37.488024823]', '');
+INSERT INTO store_data
+(store_id, store_name, store_address, store_location, description)
+VALUES(4, N'Альфа', N'город Москва, Гвардейская улица, дом 15, корпус 2', '[55.724743484,37.422065222]', '');
+INSERT INTO store_data
+(store_id, store_name, store_address, store_location, description)
+VALUES(5, N'Эта', N'город Москва, улица Вилиса Лациса, дом 23, корпус 2', '[55.862016728,37.422337259]', '');
+INSERT INTO store_data
+(store_id, store_name, store_address, store_location, description)
+VALUES(6, N'Дельта', N'город Москва, микрорайон Северное Чертаново, дом 5, корпус Г', '[55.63799676,37.590931324]', 'Удобнее добираться на автомобиле.');
+INSERT INTO store_data
+(store_id, store_name, store_address, store_location, description)
+VALUES(7, N'Эпсилон', N'город Москва, Ореховый проезд, дом 17, корпус 2', '[55.623839092,37.734113107]', '');
+INSERT INTO store_data
+(store_id, store_name, store_address, store_location, description)
+VALUES(8, N'Йота', N'город Москва, улица Газопровод, дом 9А', '[55.591001279,37.606876613]', '');
+INSERT INTO store_data
+(store_id, store_name, store_address, store_location, description)
+VALUES(9, N'Дзета', N'город Москва, Рязанский проспект, дом 2, строение 24', '[55.730702846,37.735875581]', '');
+INSERT INTO store_data
+(store_id, store_name, store_address, store_location, description)
+VALUES(10, N'Каппа', N'город Москва, улица Стромынка, дом 6', '[55.7912397,37.687272174]', '');
+INSERT INTO store_data
+(store_id, store_name, store_address, store_location, description)
+VALUES(11, N'Тау', N'город Москва, Флотская улица, дом 25', '[55.86161123,37.51313997]', '');
+INSERT INTO store_data
+(store_id, store_name, store_address, store_location, description)
+VALUES(12, N'Бета', N'город Москва, Долгоруковская улица, дом 23, строение 1', '[55.775754162,37.602958792]', '');
 
 EXEC sys.sp_cdc_enable_table @source_schema = 'dbo', @source_name = 'store_data', @role_name = NULL, @supports_net_changes = 0;
 
